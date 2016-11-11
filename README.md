@@ -1,2 +1,2 @@
-# niotext-php
-PHP bindings for the NioText Platform API
+# NioText PHP
+PHP wrapper for the NioText API
