@@ -5,12 +5,12 @@ namespace Niodev\NioText;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Subscriber\Retry\RetrySubscriber;
 
-class NioText
+class Client
 {
-    protected $apiUrl = 'https://app.niotext.com';
-    protected $apiRoot = 'api/';
-    protected $apiClient;
-    protected $appSecret;
+    public $apiUrl = 'https://app.niotext.com';
+    public $apiRoot = 'api/';
+    public $apiClient;
+    public $appSecret;
 
     public function __construct($appSecret, $apiUrl = NULL)
     {
@@ -46,6 +46,6 @@ class NioText
 
     public function account()
     {
-        return Models\Account($this);
+        return new Models\Account($this);
     }
 }

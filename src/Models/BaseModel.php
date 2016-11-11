@@ -4,17 +4,12 @@ namespace Niodev\NioText\Models;
 
 class BaseModel
 {
-    public $modelName;
+    protected $modelName;
     protected $nioText;
-
-    public function __construct($nioText)
-    {
-        $this->nioText = $nioText;
-    }
 
     public function create($data)
     {
-        return $this->nioText->apiClient->post('/'.$apiRoot.$modelName, [
+        return $this->nioText->apiClient->post('/'.$this->nioText->apiRoot.$this->modelName, [
             'json' => $data,
         ]);
     }
@@ -25,14 +20,14 @@ class BaseModel
             $id = '/'.$id;
         }
 
-        return $this->nioText->apiClient->put('/'.$apiRoot.$modelName.$id, [
+        return $this->nioText->apiClient->put('/'.$this->nioText->apiRoot.$this->modelName.$id, [
             'json' => $event->account,
         ]);
     }
 
     public function delete($id)
     {
-        return $this->nioText->apiClient->delete('/'.$apiRoot.$modelName, [
+        return $this->nioText->apiClient->delete('/'.$this->nioText->apiRoot.$this->modelName, [
             'json' => ['id' => $id],
         ]);
     }

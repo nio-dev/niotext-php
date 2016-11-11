@@ -4,10 +4,9 @@ namespace Niodev\NioText\Models;
 
 class Account extends BaseModel
 {
-    public $modelName = 'accounts';
-
-    public function __construct()
+    public function __construct($nioText)
     {
-        parent::__construct();
+        $this->modelName = 'accounts';
+        $this->nioText = $nioText;
     }
 }
