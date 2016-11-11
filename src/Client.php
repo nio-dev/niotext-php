@@ -48,4 +48,9 @@ class Client
     {
         return new Models\Account($this);
     }
+
+    public function user()
+    {
+        return new Models\User($this);
+    }
 }

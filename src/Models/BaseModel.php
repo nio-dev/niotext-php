@@ -21,7 +21,7 @@ class BaseModel
         }
 
         return $this->nioText->apiClient->put('/'.$this->nioText->apiRoot.$this->modelName.$id, [
-            'json' => $event->account,
+            'json' => $data,
         ]);
     }
 
