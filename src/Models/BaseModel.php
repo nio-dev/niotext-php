@@ -28,7 +28,7 @@ class BaseModel
     public function delete($id)
     {
         return $this->nioText->apiClient->delete('/'.$this->nioText->apiRoot.$this->modelName, [
-            'json' => ['id' => $id],
+            'json' => ['related_id' => $id],
         ]);
     }
 }

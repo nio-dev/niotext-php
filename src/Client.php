@@ -53,4 +53,9 @@ class Client
     {
         return new Models\User($this);
     }
+
+    public function contact()
+    {
+        return new Models\Contact($this);
+    }
 }
