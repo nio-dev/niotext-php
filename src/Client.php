@@ -44,6 +44,16 @@ class Client
         return $client;
     }
 
+    public function login()
+    {
+        return $this->apiClient->post('/'.$this->apiRoot.'login');
+    }
+
+    public function logout()
+    {
+        return $this->apiClient->post('/'.$this->apiRoot.'logout');
+    }
+
     public function account()
     {
         return new Models\Account($this);
