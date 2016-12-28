@@ -2,8 +2,8 @@
 
 namespace Niodev\NioText;
 
-use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Subscriber\Retry\RetrySubscriber;
+use Guzzle\Client as GuzzleClient;
+use Guzzle\Subscriber\Retry\RetrySubscriber;
 
 class Client
 {
