@@ -3,7 +3,6 @@
 namespace Niodev\NioText;
 
 use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Subscriber\Retry\RetrySubscriber;
 
 class Client
 {
@@ -24,22 +23,13 @@ class Client
 
     private function _createApiClient()
     {
-        // $retry = new RetrySubscriber([
-        //     'filter' => RetrySubscriber::createStatusFilter(),
-        //     'max' => 10
-        // ]);
-
         $client = new GuzzleClient([
-            'base_url' => $this->apiUrl,
-            'defaults' => [
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Authorization' => 'Bearer '.$this->appSecret
-                ]
+            'base_uri' => $this->apiUrl,
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer '.$this->appSecret
             ]
         ]);
-
-        // $client->getEmitter()->attach($retry);
 
         return $client;
     }
