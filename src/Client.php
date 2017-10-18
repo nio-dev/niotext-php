@@ -3,58 +3,43 @@
 namespace Niodev\NioText;
 
 use GuzzleHttp\Client as GuzzleClient;
+use Niodev\NioText\Entities\Account;
+use Niodev\NioText\Entities\Appointment;
+use Niodev\NioText\Entities\Contact;
+use Niodev\NioText\Entities\User;
 
 class Client
 {
-    public $apiUrl = 'https://api.niotext.com';
-    public $apiClient;
-    public $appSecret;
+    public $client;
 
-    public function __construct($appSecret, $apiUrl = null)
+    public function __construct($appSecret, $url = 'https://api.niotext.com')
     {
-        if ($apiUrl) {
-            $this->apiUrl = $apiUrl;
-        }
-
-        $this->appSecret = $appSecret;
-        $this->apiClient = $this->_createApiClient();
-    }
-
-    private function _createApiClient()
-    {
-        $client = new GuzzleClient([
-            'base_uri' => $this->apiUrl,
-            'headers'  => [
-                'Accept'        => 'application/json',
-                'Authorization' => 'Bearer ' . $this->appSecret,
+        $this->client = new GuzzleClient([
+            'base_uri' => $url,
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => "Bearer {$appSecret}",
             ],
         ]);
-
-        return $client;
-    }
-
-    public function login()
-    {
-        return $this->apiClient->post('/login');
-    }
-
-    public function logout()
-    {
-        return $this->apiClient->post('/logout');
     }
 
     public function account()
     {
-        return new Models\Account($this);
+        return new Account($this->client);
     }
 
     public function user()
     {
-        return new Models\User($this);
+        return new User($this->client);
     }
 
     public function contact()
     {
-        return new Models\Contact($this);
+        return new Contact($this->client);
+    }
+
+    public function appointments()
+    {
+        return new Appointment($this->client);
     }
 }
