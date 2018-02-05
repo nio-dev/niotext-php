@@ -6,40 +6,46 @@ use GuzzleHttp\Client as GuzzleClient;
 use Niodev\NioText\Entities\Account;
 use Niodev\NioText\Entities\Appointment;
 use Niodev\NioText\Entities\Contact;
+use Niodev\NioText\Entities\Conversation;
 use Niodev\NioText\Entities\User;
 
 class Client
 {
     public $client;
 
-    public function __construct($appSecret, $url = 'https://api.niotext.com')
+    public function __construct($authToken, $url = 'https://api.niotext.com')
     {
         $this->client = new GuzzleClient([
             'base_uri' => $url,
             'headers' => [
                 'Accept' => 'application/json',
-                'Authorization' => "Bearer {$appSecret}",
+                'Authorization' => "Bearer {$authToken}",
             ],
         ]);
     }
 
-    public function account()
+    public function account(): Account
     {
         return new Account($this->client);
     }
 
-    public function user()
+    public function appointments(): Appointment
     {
-        return new User($this->client);
+        return new Appointment($this->client);
     }
 
-    public function contact()
+    public function contact(): Contact
     {
         return new Contact($this->client);
     }
 
-    public function appointments()
+    public function conversation(): Conversation
     {
-        return new Appointment($this->client);
+        return new Conversation($this->client);
+    }
+
+    public function user(): User
+    {
+        return new User($this->client);
     }
 }

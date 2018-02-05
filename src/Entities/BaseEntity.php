@@ -7,32 +7,22 @@ class BaseEntity
     protected $entity;
     protected $client;
 
-    public function create($data)
+    public function create(array $data)
     {
         return $this->client->post("/{$this->entity}", [
             'json' => $data,
         ]);
     }
 
-    public function update($data, $id = '')
+    public function update(int $id, array $data)
     {
-        if ($id) {
-            $id = "/$id";
-        }
-
-        return $this->client->put("/{$this->entity}{$id}", [
+        return $this->client->put("/{$this->entity}/{$id}", [
             'json' => $data,
         ]);
     }
 
-    public function delete($data, $id = '')
+    public function delete(int $id)
     {
-        if ($id) {
-            $id = "/$id";
-        }
-
-        return $this->client->delete("/{$this->entity}{$id}", [
-            'json' => $data,
-        ]);
+        return $this->client->delete("/{$this->entity}/{$id}");
     }
 }
