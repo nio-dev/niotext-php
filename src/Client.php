@@ -6,6 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use Niodev\NioText\Entities\Account;
 use Niodev\NioText\Entities\Appointment;
 use Niodev\NioText\Entities\Contact;
+use Niodev\NioText\Entities\ContactPhone;
 use Niodev\NioText\Entities\Conversation;
 use Niodev\NioText\Entities\User;
 
@@ -29,7 +30,7 @@ class Client
         return new Account($this->client);
     }
 
-    public function appointments(): Appointment
+    public function appointment(): Appointment
     {
         return new Appointment($this->client);
     }
@@ -37,6 +38,11 @@ class Client
     public function contact(): Contact
     {
         return new Contact($this->client);
+    }
+
+    public function contactPhone(): ContactPhone
+    {
+        return new ContactPhone($this->client);
     }
 
     public function conversation(): Conversation
