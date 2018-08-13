@@ -9,6 +9,7 @@ use Niodev\NioText\Entities\Contact;
 use Niodev\NioText\Entities\ContactPhone;
 use Niodev\NioText\Entities\Conversation;
 use Niodev\NioText\Entities\User;
+use Niodev\NioText\Entities\Billing;
 
 class Client
 {
@@ -53,5 +54,10 @@ class Client
     public function user(): User
     {
         return new User($this->client);
+    }
+
+    public function billing() : Billing
+    {
+        return new Billing($this->client);
     }
 }

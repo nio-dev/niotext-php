@@ -25,4 +25,11 @@ class BaseEntity
     {
         return $this->client->delete("/{$this->entity}/{$id}");
     }
+
+    public function retrieve(array $payload)
+    {
+        return $this->client->get("/{$this->entity}", [
+            'json' => $payload,
+        ]);
+    }
 }
