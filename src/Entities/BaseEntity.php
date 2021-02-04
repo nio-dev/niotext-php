@@ -2,9 +2,13 @@
 
 namespace Niodev\NioText\Entities;
 
+use GuzzleHttp\Client;
+
 class BaseEntity
 {
+    /**  @var string */
     protected $entity;
+    /**  @var Client */
     protected $client;
 
     public function create(array $data)
