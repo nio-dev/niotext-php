@@ -9,6 +9,8 @@ use Niodev\NioText\Entities\Contact;
 use Niodev\NioText\Entities\ContactPhone;
 use Niodev\NioText\Entities\Conversation;
 use Niodev\NioText\Entities\Organization;
+use Niodev\NioText\Entities\Template;
+use Niodev\NioText\Entities\TemplateCategory;
 use Niodev\NioText\Entities\User;
 use Niodev\NioText\Entities\Billing;
 
@@ -60,6 +62,16 @@ class Client
     public function organization(): Organization
     {
         return new Organization($this->client);
+    }
+
+    public function template(): Template
+    {
+        return new Template($this->client);
+    }
+
+    public function templateCategory(): TemplateCategory
+    {
+        return new TemplateCategory($this->client);
     }
 
     public function user(): User
